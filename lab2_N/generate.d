@@ -1,0 +1,1 @@
+generate.o: generate.cc
