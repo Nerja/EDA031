@@ -75,7 +75,7 @@ int edit_distance(string sugg, string word) {
 
 	for(unsigned i = 1; i <= word.length(); i++) {
 		for(unsigned j = 1; j <= sugg.length(); j++) {
-			int c1 = (word[i] == sugg[j]) ? (d[i-1][j-1]) : (d[i-1][j-1] + 1);
+			int c1 = (word[i-1] == sugg[j-1]) ? (d[i-1][j-1]) : (d[i-1][j-1] + 1);
 			int c2 = d[i-1][j] + 1;
 				int c3 = d[i][j-1] + 1;
 			d[i][j] = min(min(c1, c2), c3);
