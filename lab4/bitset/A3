@@ -1,0 +1,45 @@
+ABCDEFG
+
+get:
+--------------------------------------
+Vill ha bit på position pos (ex: 3)
+1L ger
+0000001
+1L << 3 ger
+0001000
+
+(1L << 3) & bits ger
+0001000 & ABCDEFG = 000D000
+om 000D000 != 0 är D en 1:a annars 0:a
+
+set
+--------------------------------------
+om b true: set tex (pos 3)
+1L ger
+0000001
+1L << 3 ger
+0001000
+
+or ger
+bits |= 0001000 är or mellan
+ABCDEFG
+0001000
+
+gör så att D blir true oavsett nuvarande värde
+
+om b false: set tex (pos 3)
+1L ger
+0000001
+1L << 3 ger
+0001000
+
+~ complement ger
+1110111
+
+bits &= 1110111
+sätter D till false oavsett värde
+
+
+
+
+

@@ -1,0 +1,24 @@
+		290024(measure) 1000000(estimated)
+vector		0.2955
+map		0.000952
+unordered	0.00033
+hash		0.000259
+
+vector söker i snitt n/2 element efter varje mappning.
+linjär ökning i tiden ger (1000000/290024)*0.2955 ms = 1.019ms
+
+map har en tidskomplexitet på O(log n) ty ett sökträd.
+alltså (log(1000000)/log(290249))*0.000952 = 0.00105ms
+
+unordered map är en hashmap och skall ha O(1) 
+alltså uförändrad 0.00033ms
+
+O(1)
+alltså oförändrad.
+
+---------------------------------------------------------------
+		290024(measure) 1000000(estimated)
+vector		0.667		2.2998ms
+map		0.00096		0.00104ms
+unordered	0.00036		0.00036
+hash		0.00031		0.00031

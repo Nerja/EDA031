@@ -25,11 +25,11 @@ bool List::exists(int d) const {
 
 int List::size() const {
 	Node* n = first;
-	int nbrElements = 0;	
+	int nbrElements = 0;
 	while(n != nullptr) {
 		n = n->next;
 		nbrElements++;
-		
+
 	}
 	return nbrElements;
 }
@@ -55,23 +55,27 @@ bool should_be_removed(int el, int d, List::DeleteFlag df) {
 }
 
 void List::remove(int d, List::DeleteFlag df) {
-	Node *prev = nullptr, *current = first, *new_first = nullptr;
-	while(current != nullptr) {
-		if(should_be_removed(current->value, d, df)) { //Remove node
-			//Link over the current node from prev if not nullptr, i.e current is first
-			if(prev != nullptr)
-      				prev->next = current->next;
-			Node* old_current = current; //Save to delete
-			current = current->next;
-			delete old_current;
-		} else { //Do not remove node
-			if(new_first == nullptr) //Set first node
-				new_first = current;
-			prev = current;
-			current = current->next;
+	if(first != nullptr) {
+		if(should_be_removed(first->value, d, df)) {
+			Node* old_first = first;
+			first = first->next;
+			delete old_first;
+		} else {
+			Node *prev = first, *curr = first->next;
+			bool removed = false;
+			while(curr != nullptr && !removed) {
+				if(should_be_removed(curr->value, d, df)) {
+					Node* note_to_del = curr;
+					prev->next = curr->next;
+					delete note_to_del;
+					removed = true;
+				} else {
+					prev = curr;
+					curr = curr->next;
+				}
+			}
 		}
 	}
-	first = new_first; //Update first
 }
 
 void List::print() const {
@@ -81,4 +85,3 @@ void List::print() const {
 		n = n->next;
 	}
 }
-
