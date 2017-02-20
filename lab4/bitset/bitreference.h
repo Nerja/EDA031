@@ -12,6 +12,7 @@
 
 class BitReference {
 	friend class BitsetIterator;
+	friend bool operator==(const BitReference& r1, const BitReference& r2);
 public:
 	BitReference(Bitset::BitStorage* pb, std::size_t p)
 	    : p_bits(pb), pos(p) {}
@@ -34,5 +35,7 @@ private:
 	Bitset::BitStorage* p_bits; // pointer to the word containing bits
 	std::size_t pos;            // position of the bit in the word
 };
+
+bool operator==(const BitReference& r1, const BitReference& r2);
 
 #endif

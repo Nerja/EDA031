@@ -19,3 +19,7 @@ BitReference& BitReference::operator=(const BitReference& rhs) {
 BitReference::operator bool() const {
 	return (*p_bits & (1L << pos)) != 0;
 }
+
+bool operator==(const BitReference& r1, const BitReference& r2) {
+		return r1.pos == r2.pos && *r1.p_bits == *r2.p_bits;
+}
