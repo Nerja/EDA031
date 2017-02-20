@@ -9,7 +9,8 @@ size_t Bitset::size() const {
 }
 
 bool Bitset::operator[](size_t pos) const {
-	return (bits & (1L << pos)) != 0;
+	BitStorage const_bits = bits; //Make copy since we may not change bits
+	return BitReference(&const_bits, pos);
 }
 
 BitReference Bitset::operator[](size_t pos) {
